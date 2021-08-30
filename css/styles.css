@@ -11322,8 +11322,9 @@ header.masthead {
   position: relative;
   overflow: hidden;
   padding-top: calc(7rem + 72px);
-  padding-bottom: 7rem;
-  background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+  padding-bottom: 40rem;
+  /* background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%); */
+  background-image: url("/assets/img/01.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
@@ -11332,6 +11333,7 @@ header.masthead {
 header.masthead .masthead-content {
   z-index: 1;
   position: relative;
+  padding-top: 15rem;
 }
 header.masthead .masthead-content .masthead-heading {
   font-size: 4rem;
