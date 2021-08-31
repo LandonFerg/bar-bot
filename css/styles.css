@@ -1962,7 +1962,7 @@ progress {
   --bs-table-striped-color: #212529;
   --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
   --bs-table-active-color: #212529;
-  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-active-bg: rgba(88, 68, 128, 0.1);
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
@@ -11383,4 +11383,37 @@ header.masthead .bg-circle-4 {
   header.masthead .masthead-content .masthead-subheading {
     font-size: 4rem;
   }
+}
+
+/* drink selection */
+#select {
+  background-color: black;
+}
+
+/* drink selection tables */
+.clickable-row {
+  color: white;
+}
+
+.clickable-row.active {
+  background-color: rgb(43, 39, 65);
+}
+
+.footer p {
+  /* Selects text inside a <p> tag that is inside a .footer <div> */
+  margin-bottom: 0;
+  /* removes default <p> tag margin from the bottom */
+}
+
+.footer-main {
+  background: #81ccfb;
+  padding: 1em;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+html {
+  background-color: black;
 }

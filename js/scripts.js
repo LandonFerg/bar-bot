@@ -1,7 +1,15 @@
-/*!
-* Start Bootstrap - One Page Wonder v6.0.3 (https://startbootstrap.com/theme/one-page-wonder)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-one-page-wonder/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+/*   MAIN JS FILE FOR ALL PAGES   */
+
+var drinkIndex = 0;
+var drinkName = "N/A"
+
+// Make drink selector clickable
+$('#drinkSelect').on('click', '.clickable-row', function(event) {
+  $(this).addClass('active').siblings().removeClass('active');
+  drinkIndex = $(this).index();
+  drinkName = $(this).text();
+
+  // debug
+  console.log(drinkIndex);
+  console.log(drinkName);
+});
