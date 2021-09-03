@@ -11430,3 +11430,43 @@ html {
 .valueSpan4 {
   float: right;
 }
+.valueSpan5 {
+  float: right;
+}
+.valueSpan6 {
+  float: right;
+}
+.valueSpan7 {
+  float: right;
+}
+.valueSpan8 {
+  float: right;
+}
+.valueSpan9 {
+  float: right;
+}
+.valueSpan10 {
+  float: right;
+}
+.valueSpan11 {
+  float: right;
+}
+.valueSpan12 {
+  float: right;
+}
+.myLabel{
+  color: white;
+  font-variant: small-caps;
+  font-size: 24;
+  padding-left: 0.5rem;
+}
+
+/* mixer labels */
+.myLabel2 {
+  color: white;
+  font-variant: small-caps;
+  font-size: 24;
+  padding-left: 0.5rem;
+}
+
+/* note: label 1,2,3,4 etc. clases are for later use when wanting to change drink names via code in jquery */

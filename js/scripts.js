@@ -19,7 +19,7 @@ class Drink {
 
 // Example drinks
 const MM = new Drink("MoscowMule", 10,20,0,0);
-const KF = new Drink("Kevin's Favorite", 90,0,75,5);
+const KF = new Drink("Kevin's Favorite", 90,0,4,5);
 drinks.push(MM);
 drinks.push(KF);
 
@@ -39,19 +39,43 @@ $("#drinkSelect").find('tbody')
 
 // Make drink selector clickable
 $('#drinkSelect').on('click', '.clickable-row', function(event) {
-  $(this).addClass('active').siblings().removeClass('active');
-  drinkIndex = $(this).index();
-  drinkName = $(this).text();
 
-  // debug
-  console.log(drinkIndex);
-  console.log(drinkName);
+    $(this).addClass('active').siblings().removeClass('active');
+    drinkIndex = $(this).index();
+    drinkName = $(this).text();
+
+    // debug
+    console.log(drinkIndex);
+    console.log(drinkName);
+
+
+    // Get references to slider values
+    var $vs1 = $('.valueSpan1');
+    var $vs2 = $('.valueSpan2');
+    var $vs3 = $('.valueSpan3');
+    var $vs4 = $('.valueSpan4');
+
+    // Get current drink
+    var cd = drinks[drinkIndex];
+
+    // Set drink values on drink select
+    $vs1.html(cd.d1);
+    $vs2.html(cd.d2);
+    $vs3.html(cd.d3);
+    $vs4.html(cd.d4);
+
+    // Set slider positions on drink select
+    $("#sl1").val(cd.d1)
+    $("#sl2").val(cd.d2)
+    $("#sl3").val(cd.d3)
+    $("#sl4").val(cd.d4)
 });
 
 
 // Update slider values
 $(document).ready(function() {
 
+    // SHOTS
     const $valueSpan1 = $('.valueSpan1');
     const $value1 = $('#sl1');
     $valueSpan1.html($value1.val());
@@ -87,4 +111,13 @@ $(document).ready(function() {
     $valueSpan4.html($value4.val());
     });
     drinkVals[3] = $value2.val
+
+    // MIXERS
+    const $valueSpan5 = $('.valueSpan5');
+    const $value5 = $('#sl5');
+    $valueSpan5.html($value5.val());
+    $value5.on('input change', () => {
+
+    $valueSpan5.html($value5.val());
+    });
 });
