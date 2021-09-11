@@ -1,5 +1,5 @@
 // Drink visualization
-let cup;
+/*let cup;
 let cup_mask;
 
 function preload() {
@@ -20,6 +20,7 @@ function draw()
 
     rectMode(CENTER);
     fill(0, 50, 200);
+    // 
     rect(window.innerWidth/2, 200, 300, 55);
 
     imageMode(CENTER);
@@ -28,4 +29,4 @@ function draw()
     // Draw cup mask
     imageMode(CENTER);
     image(cup_mask, window.innerWidth/2, 200);
-}
+}*/

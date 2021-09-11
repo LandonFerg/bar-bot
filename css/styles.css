@@ -492,11 +492,24 @@ progress {
   font-weight: 300;
 }
 
+/* ALFRED font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=IBM+Plex+Mono:wght@500&display=swap');
+
+/* Title */
 .display-1 {
+  /* font-family: 'Dosis',
+  sans-serif;
+  font-family: 'IBM Plex Mono',
+  monospace; */
   font-size: calc(1.625rem + 4.5vw);
-  font-weight: 300;
+  color: rgb(146, 235, 151);
+  /* -webkit-text-stroke: 0.1px white; */
+  filter: drop-shadow(0px 0px 5px black);
+  font-weight: 500;
   line-height: 1.2;
 }
+
 @media (min-width: 1200px) {
   .display-1 {
     font-size: 5rem;
@@ -11330,10 +11343,11 @@ header.masthead {
   background-attachment: scroll;
   background-size: cover;
 }
+/* Top padding */
 header.masthead .masthead-content {
   z-index: 1;
   position: relative;
-  padding-top: 15rem;
+  padding-top: 10rem;
 }
 header.masthead .masthead-content .masthead-heading {
   font-size: 4rem;
