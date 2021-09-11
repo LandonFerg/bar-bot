@@ -26,10 +26,11 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   });
 });
 
-var pump1 = new GPIO(5, 'out'); //use GPIO pin 4, and specify that it is output
-var pump2 = new GPIO(5, 'out'); //use GPIO pin 4, and specify that it is output
-var pump3 = new GPIO(5, 'out'); //use GPIO pin 4, and specify that it is output
-var pump4 = new GPIO(5, 'out'); //use GPIO pin 4, and specify that it is output
+// Define pump GPIO pins (High is due to relay board being triggered on low value)
+var pump1 = new GPIO(5, 'high');
+// var pump2 = new GPIO(6, 'high');
+// var pump3 = new GPIO(13, 'high');
+// var pump4 = new GPIO(19, 'high');
 
 function testPump()
 {
@@ -39,7 +40,16 @@ function testPump()
     setTimeout(function() {
         pump1.writeSync(0); // turn off pump after 5 seconds
         console.log("turning off pump...");
-    }, 5000);
+    }, 2000);
 }
+
+// Cleanup GPIO
+process.on('SIGINT', _ => {
+  pump1.unexport();
+  pump2.unexport();
+  pump3.unexport();
+  pump4.unexport();
+});
+
 
 server.listen(port, () => console.log(`Server running at http://localhost:${port}`));
