@@ -14,7 +14,7 @@ var GPIO = require('onoff').Gpio; //include onoff to interact with the GPIO
 
 // Pump settings
 const pumpGPIO = [5,6,13,19];
-var pumps; // array to hold all our pumps
+let pumps = []; // array to hold all our pumps
 initPumps(pumpGPIO); // initialize pumps for the gpio
 
 io.sockets.on('connection', function (socket) {
