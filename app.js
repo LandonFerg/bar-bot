@@ -42,20 +42,37 @@ function initPumps(vals)
 	});
 }
 
+// async with promise
+function resolvePump(pn, s)
+{
+	return new Promise(resolve => {
+		setTimeout(() => {
+			pumps[pn].writeSync(1); // turn off pump
+			resolve('resolved');
+		}, s);
+	});
+}
+
+function runPump(pn, s)
+{
+	pumps[pn].writeSync(0); // turn on pump
+	var result = await resolvePump(pn, s); // wait for pump to turn off
+}
+
 
 function testPump()
 {
+	runPump(0, 2000); // run pump 1 for 2 seconds
+	// for (let i = 0; i < pumps.length; i++)
+	// {
+	// 	pumps[i].writeSync(0); // turn on pump
+	// 	console.log("turning on pump...");
 
-	for (let i = 0; i < pumps.length; i++)
-	{
-		pumps[i].writeSync(0); // turn on pump
-		console.log("turning on pump...");
-
-		setTimeout(function() {
-			pumps[i].writeSync(1); // turn off pump after 2 seconds
-			console.log("turning off pump...");
-		}, 2000);
-	}
+	// 	setTimeout(function() {
+	// 		pumps[i].writeSync(1); // turn off pump after 2 seconds
+	// 		console.log("turning off pump...");
+	// 	}, 2000);
+	// }
 }
 
 // Cleanup GPIO
