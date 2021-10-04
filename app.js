@@ -62,7 +62,8 @@ async function runPump(pn, s)
 
 function testPump()
 {
-	runPump(0, 2000); // run pump 1 for 2 seconds
+	runPump(0, 2000).then(runPump(1,2000)); // run pump 1 for 2 seconds
+	//runPump(1, 5000); // run pump 1 for 5 seconds
 	// for (let i = 0; i < pumps.length; i++)
 	// {
 	// 	pumps[i].writeSync(0); // turn on pump
