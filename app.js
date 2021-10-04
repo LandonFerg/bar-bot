@@ -45,13 +45,17 @@ function initPumps(vals)
 
 function testPump()
 {
-    console.log("turning on pump...");
-    pumps[0].writeSync(0); // turn on pump
 
-    setTimeout(function() {
-        pumps[0].writeSync(1); // turn off pump after 5 seconds
-        console.log("turning off pump...");
-    }, 2000);
+	for (let i = 0; i < pumps.length; i++)
+	{
+		pumps[i].writeSync(0); // turn on pump
+		console.log("turning on pump...");
+
+		setTimeout(function() {
+			pumps[i].writeSync(1); // turn off pump after 2 seconds
+			console.log("turning off pump...");
+		}, 2000);
+	}
 }
 
 // Cleanup GPIO
