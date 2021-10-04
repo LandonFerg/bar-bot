@@ -4,23 +4,29 @@ var drinkIndex = 0;
 var drinkName = "N/A";
 
 var drinkVals = [];
+var liquorNames = ['Vodka', 'Tequila', 'Rum', 'Kahlua'];
+var mixerNames = ['Coke']
 var drinks = [];
 
 // Drink class
 class Drink {
-  constructor(name, d1,d2,d3,d4) {
+  constructor(name, d1,d2,d3,d4, m1) {
     this.name = name;
+    // LIQUOR
     this.d1 = d1;
     this.d2 = d2;
     this.d3 = d3;
     this.d4 = d4;
+
+    // MIXERS
+    this.m1 = m1; // coke
   }
 }
 
-// Example drinks
-const MM = new Drink("MoscowMule", 10,20,0,0);
-const KF = new Drink("Kevin's Favorite", 90,0,4,5);
-drinks.push(MM);
+// Example drinks TODO: Read from json instead
+const RC = new Drink("Rum & Coke", 0,0,1,0,4);
+const KF = new Drink("Kevin's Favorite", 1,1,0,0,0);
+drinks.push(RC);
 drinks.push(KF);
 
 console.log(drinks[1].name);
@@ -54,6 +60,7 @@ $('#drinkSelect').on('click', '.clickable-row', function(event) {
     var $vs2 = $('.valueSpan2');
     var $vs3 = $('.valueSpan3');
     var $vs4 = $('.valueSpan4');
+    var $vs5 = $('.valueSpan5');
 
     // Get current drink
     var cd = drinks[drinkIndex];
@@ -64,11 +71,15 @@ $('#drinkSelect').on('click', '.clickable-row', function(event) {
     $vs3.html(cd.d3);
     $vs4.html(cd.d4);
 
+    $vs5.html(cd.m1);
+
     // Set slider positions on drink select
-    $("#sl1").val(cd.d1)
-    $("#sl2").val(cd.d2)
-    $("#sl3").val(cd.d3)
-    $("#sl4").val(cd.d4)
+    $("#sl1").val(cd.d1);
+    $("#sl2").val(cd.d2);
+    $("#sl3").val(cd.d3);
+    $("#sl4").val(cd.d4);
+
+    $("#sl5").val(cd.m1);
 });
 
 
@@ -101,7 +112,7 @@ $(document).ready(function() {
 
     $valueSpan3.html($value3.val());
     });
-    drinkVals[2] = $value2.val
+    drinkVals[2] = $value3.val
 
     const $valueSpan4 = $('.valueSpan4');
     const $value4 = $('#sl4');
@@ -110,7 +121,7 @@ $(document).ready(function() {
 
     $valueSpan4.html($value4.val());
     });
-    drinkVals[3] = $value2.val
+    drinkVals[3] = $value4.val
 
     // MIXERS
     const $valueSpan5 = $('.valueSpan5');
@@ -120,4 +131,6 @@ $(document).ready(function() {
 
     $valueSpan5.html($value5.val());
     });
+    drinkVals[4] = $value5.val
+    
 });
