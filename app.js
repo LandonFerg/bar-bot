@@ -53,7 +53,7 @@ function resolvePump(pn, s)
 	});
 }
 
-function runPump(pn, s)
+async function runPump(pn, s)
 {
 	pumps[pn].writeSync(0); // turn on pump
 	var result = await resolvePump(pn, s); // wait for pump to turn off
