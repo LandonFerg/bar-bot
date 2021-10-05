@@ -57,12 +57,20 @@ async function runPump(pn, s)
 {
 	pumps[pn].writeSync(0); // turn on pump
 	var result = await resolvePump(pn, s); // wait for pump to turn off
+
 }
 
 
 function testPump()
 {
-	runPump(0, 2000).then(runPump(1,2000)); // run pump 1 for 2 seconds
+	var secondsBetween = 2000;
+
+	runPump(0, 2000);
+	setTimeout(() => {
+		runPump(1, 2000);
+	}, secondsBetween);
+	
+	then(runPump(1,2000)); // run pump 1 for 2 seconds
 	//runPump(1, 5000); // run pump 1 for 5 seconds
 	// for (let i = 0; i < pumps.length; i++)
 	// {
