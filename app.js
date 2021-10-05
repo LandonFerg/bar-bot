@@ -63,12 +63,19 @@ async function runPump(pn, s)
 
 function testPump()
 {
-	var secondsBetween = 2000;
 
-	runPump(0, 2000);
-	setTimeout(() => {
-		runPump(1, 2000);
-	}, secondsBetween);
+
+	//runPump(0, 2000);
+
+	var secondsBetween = 2000;
+	var i = 0;
+	pumps.forEach(p => {
+		setTimeout(() => {
+			runPump(i, 2000);
+		}, secondsBetween + secondsBetween);
+		secondsBetween += secondsBetween; // add another go to the offset
+		i = i + 1;
+	});
 	
 	//then(runPump(1,2000)); // run pump 1 for 2 seconds
 	//runPump(1, 5000); // run pump 1 for 5 seconds
