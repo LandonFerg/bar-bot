@@ -69,7 +69,7 @@ function testPump()
 	{
 		setTimeout(function(){
 			runPump(i, 2000)
-		}, 3000 + secondsBetween);    
+		}, secondsBetween + secondsBetween);    
 		secondsBetween += secondsBetween;
 	}
 	// setTimeout(() => {
