@@ -70,7 +70,7 @@ function testPump()
 		runPump(1, 2000);
 	}, secondsBetween);
 	
-	then(runPump(1,2000)); // run pump 1 for 2 seconds
+	//then(runPump(1,2000)); // run pump 1 for 2 seconds
 	//runPump(1, 5000); // run pump 1 for 5 seconds
 	// for (let i = 0; i < pumps.length; i++)
 	// {
