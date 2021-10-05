@@ -64,14 +64,12 @@ async function runPump(pn, s)
 function testPump()
 {
 	var secondsBetween = 2000;
-
-	runPump(0, 2000);
 	
 	for (let i = 0; i < pumps.length; i++)
 	{
 		setTimeout(function(){
 			runPump(i, 2000)
-		}, secondsBetween);    
+		}, 3000 + secondsBetween);    
 		secondsBetween += secondsBetween;
 	}
 	// setTimeout(() => {
