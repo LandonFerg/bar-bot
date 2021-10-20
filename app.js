@@ -1,6 +1,7 @@
 /* Server side code for bar-bot */
 const http = require('http');
 var fs = require('fs'); //require filesystem module
+var PythonShell = require('python-shell'); // module for python script exec.
 const static = require('node-static');
 const file = new static.Server('./');
 const server = http.createServer((req, res) => {
@@ -17,6 +18,25 @@ const pumpGPIO = [5,6,13,19];
 let pumps = []; // array to hold all our pumps
 initPumps(pumpGPIO); // initialize pumps for the gpio
 
+var testCount = 5;
+
+// Setup python-shell arguments
+var options = {
+	scriptPath: './',
+	args: [--c, 0],
+}
+
+function runPyPumps()
+{
+	// apply our current shot count to py arguments
+	options.args[1] = testCount;
+
+	PythonShell.run('main.py', options, function (err, results) {
+		if (err) throw err;
+		console.log('results: %j', results);
+	});
+}
+
 io.sockets.on('connection', function (socket) {
   var drinkValue = 0; //static variable for current status
   console.log("client connected");
@@ -28,7 +48,8 @@ io.sockets.on('connection', function (socket) {
     //   console.log(lightvalue); // clickec button
     // }
     console.log("button clicked by client!")
-    testPump();
+
+    //testPump();
   });
 });
 
