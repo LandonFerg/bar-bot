@@ -57,7 +57,6 @@ def PourLiquor(x, index):
 def StopLiquor(st, wt):
         print("start stopLiquor")
         timeElapsed = time.time() - st
-        i = 0
         print("wait time: " + str(wt))
         print("pour timers: ")
         print(pourTimers)
@@ -65,6 +64,7 @@ def StopLiquor(st, wt):
         print("time elapsed: " + str(timeElapsed))
 
         while(timeElapsed < wt):
+                i = 0
                 for a in arguments:
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
