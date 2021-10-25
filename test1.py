@@ -20,7 +20,7 @@ TRIPLE_SEC = kit.servo[8]
 
 DRINKS = [LIGHT_RUM, DARK_RUM, VODKA, TEQUILA, GIN, TRIPLE_SEC]
 
-pourTimers = [0] * 5
+pourTimers = [0] * 6
 pourStartTime = 0
 timePassed = 0
 shotStrength = 9 # seconds to wait per shot
