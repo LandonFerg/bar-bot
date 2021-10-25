@@ -50,13 +50,13 @@ def PourLiquor(x, index):
                         TotalWaitTime = timeToWait
 
                 i = i + 1
-        pourStartTime = time.time # start timer after pouring shots
+        pourStartTime = time.time() # start timer after pouring shots
         StopLiquor(pourStartTime, TotalWaitTime)
 
 
 def StopLiquor(st, wt):
         print("start stopLiquor")
-        timeElapsed = time.time - st
+        timeElapsed = time.time() - st
         i = 0
         print("wait time: " + str(wt))
         print("pour timers: ")
@@ -70,7 +70,7 @@ def StopLiquor(st, wt):
                                 DRINKS[i].angle = 0
                                 print("stopping the dispenser for " + DRINKLABELS[i])
                         i = i + 1
-                timeElapsed = time.time - st # update time
+                timeElapsed = time.time() - st # update time
         SilenceServos() # please
         
 
