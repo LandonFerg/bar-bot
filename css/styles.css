@@ -6964,6 +6964,10 @@ textarea.form-control-lg {
   width: 50% !important;
 }
 
+.w-65 {
+  width: 65% !important;
+}
+
 .w-75 {
   width: 75% !important;
 }
@@ -11303,6 +11307,12 @@ textarea.form-control-lg {
 }
 html {
   scroll-padding-top: 67px;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */
 }
 
 .btn-xl {

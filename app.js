@@ -50,8 +50,9 @@ io.sockets.on('connection', function (socket) {
     // if (drinkValue) {
     //   console.log(lightvalue); // clickec button
     // }
-    console.log("button clicked by client!")
+  console.log("button clicked by client!")
 	console.log("client wants " + arg1 + " shots of LIGHTRUM" )
+  options.args[1] = arg1;
 	
     //runPyPumps();
     //testPump();

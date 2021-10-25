@@ -34,7 +34,7 @@ function draw()
     // }
 
     // initial rect
-    /*for(let i = 0; i < drinkVals.length; i++)
+    for(let i = 0; i < drinkVals.length; i++)
     {
       // drink vals
       dd1 = currentDrink.d1;
@@ -101,7 +101,7 @@ function draw()
         text(mixerNames[0], window.innerWidth/2, (278 + mLayerSize) -  (layerSize * shotCount));
         shotCount++;
       }
-    }*/
+    }
 
     imageMode(CENTER);
     image(cup, window.innerWidth/2, 200);
