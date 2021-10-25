@@ -78,10 +78,11 @@ def StopLiquor(st, wt):
 
 
 if(sys.argv[1] == '-v' and len(arguments) > 0):
-        PourLiquor();
+        PourLiquor()
                 # do something with number of shots here..
 
 else:
+        SilenceServos()
         print("no -v or no arguments!")
 
 
