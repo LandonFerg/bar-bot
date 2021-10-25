@@ -22,7 +22,6 @@ DRINKLABELS = ['LIGHT_RUM', 'DARK_RUM', 'VODKA', 'TEQUILA', 'GIN', 'TRIPLE_SEC']
 DRINKS = [LIGHT_RUM, DARK_RUM, VODKA, TEQUILA, GIN, TRIPLE_SEC]
 
 pourTimers = [0] * 6
-pourStartTime = 0
 timePassed = 0
 shotStrength = 9 # seconds to wait per shot
 
@@ -52,14 +51,14 @@ def PourLiquor(x, index):
 
                 i = i + 1
         pourStartTime = time.perf_counter() # start timer after pouring shots
-        StopLiquor(TotalWaitTime)
+        StopLiquor(pourStartTime, TotalWaitTime)
 
 
-def StopLiquor(wt):
+def StopLiquor(st, wt):
         print("start stopLiquor")
-        timeElapsed = time.perf_counter() - pourStartTime
+        timeElapsed = time.perf_counter() - st
         i = 0
-        print("wait time: " + wt)
+        print("wait time: " + str(wt))
         print("pour timers: ")
         print(pourTimers)
 
@@ -71,7 +70,7 @@ def StopLiquor(wt):
                                 DRINKS[i].angle = 0
                                 print("stopping the dispenser for " + DRINKLABELS[i])
                         i = i + 1
-                timeElapsed = time.perf_counter - pourStartTime # update time
+                timeElapsed = time.perf_counter - st # update time
         SilenceServos() # please
         
 
