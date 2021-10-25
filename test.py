@@ -1,18 +1,44 @@
-from adafruit_servokit import ServoKit
+# Mixer dispenser script
+# GPIO.output(port_or_pin, 1) 1 = high
+
+# high = pump off?
+
+import sys
 import time
-kit = ServoKit(channels=16)
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+
+m1 = 5
+m2 = 6
+m3 = 13
+m4 = 19
+
+motors = [m1, m2, m3, m4]
+
+# setup motors and initialize as off
+for m in motors:
+    GPIO.setup(m, GPIO.OUT)
+    GPIO.output(m, GPIO.HIGH)
+
+drinkStrength = 1
+maxDrink = 5 # Max drink amount in ounces
+drinkAmount = 0 # current poured drink amount
+
+# remove script name and -v from list
+arguments = sys.argv[2:]
+
+def PourMixers():
+    i = 0
+    for a in arguments:
+        dArg = float(a) # drink argument ("-v 0 1 0 6 0")
+        if(a > 0):
+            GPIO.output(motors[i], GPIO.LOW) # turn on motor
+            time.sleep(drinkStrength * a)
+            GPIO.output(motors[i], GPIO.HIGH) # turn off motor
+        i = i + 1
 
 
 
-kit.servo[15].actuation_range = 160
-kit.servo[15].angle = 160
-kit.servo[14].angle = 160
-print("setting open")
-time.sleep(2)
-print("setting closed")
-kit.servo[15].angle = 0
-kit.servo[14].angle = 0
-print("disabling..")
-time.sleep(2)
-kit.servo[15].angle = None
-kit.servo[14].angle = None
+if(sys.argv[1] == '-v' and len(arguments) > 0):
+        PourMixers()
