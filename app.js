@@ -30,6 +30,7 @@ function runPyPumps()
 {
 	// apply our current shot count to py arguments
 	options.args[1] = testCount;
+
 	
 	console.log("running python code");
 	PythonShell.run('test1.py', options, function (err, results) {
@@ -44,12 +45,14 @@ io.sockets.on('connection', function (socket) {
   console.log("client connected");
 
   // TODO: pass client data for drink selection
-  socket.on('newDrink', function(/* data go here */) { // get button from client
+  socket.on('newDrink', function(arg1) { // get button from client
     // lightvalue = data;
     // if (drinkValue) {
     //   console.log(lightvalue); // clickec button
     // }
     console.log("button clicked by client!")
+	console.log("client wants " + arg1 + " shots of LIGHTRUM" )
+	
     runPyPumps();
     //testPump();
   });
