@@ -4,7 +4,6 @@ var drinkIndex = 0;
 var drinkName = "N/A";
 
 var drinkVals = [];
-var liquorNames = ['Vodka', 'Tequila', 'Rum', 'Kahlua'];
 var mixerNames = ['Coke']
 var drinks = [];
 
@@ -24,8 +23,8 @@ class Drink {
 }
 
 // Example drinks TODO: Read from json instead
-const RC = new Drink("Rum & Coke", 0,0,1,0,4);
-const KF = new Drink("Kevin's Favorite", 1,1,0,0,0);
+const RC = new Drink("Rum & Coke", 0,0,1,0,4,0);
+const KF = new Drink("Kevin's Favorite", 1,1,0,0,0,0);
 drinks.push(RC);
 drinks.push(KF);
 

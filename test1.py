@@ -23,7 +23,10 @@ DRINKS = [LIGHT_RUM, DARK_RUM, VODKA, TEQUILA, GIN, TRIPLE_SEC]
 
 pourTimers = [0] * 6
 timePassed = 0
-shotStrength = 9 # seconds to wait per shot
+
+shotDivision = 2 # half shot
+
+shotStrength = 8 / shotDivision # seconds to wait per shot div (half shot)
 
 TotalWaitTime = 0
 
@@ -41,6 +44,7 @@ def PourLiquor():
         print("start PourLiquor")
         TotalWaitTime = 0
         for a in arguments:
+                a = float(a) * shotDivision  # convert to half shot
                 if(int(a) > 0):
                         DRINKS[i].angle = 160
                         print("dispensing " + str(a)+ " shots of " + DRINKLABELS[i])
@@ -67,6 +71,7 @@ def StopLiquor(st, wt):
         while(timeElapsed < wt):
                 i = 0
                 for a in arguments:
+                        a = float(a) * shotDivision  # for half shot
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
                                 print("stopping the dispenser for " + DRINKLABELS[i])
