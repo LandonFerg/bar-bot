@@ -1,7 +1,7 @@
 /* Server side code for bar-bot */
 const http = require('http');
 var fs = require('fs'); //require filesystem module
-var PythonShell = require('python-shell'); // module for python script exec.
+let {PythonShell} = require('python-shell'); // module for python script exec.
 const static = require('node-static');
 const file = new static.Server('./');
 const server = http.createServer((req, res) => {
@@ -23,18 +23,19 @@ var testCount = 5;
 // Setup python-shell arguments
 var options = {
 	scriptPath: './',
-	args: [--c, 0],
+	args: ['--c','0'],
 }
 
 function runPyPumps()
 {
 	// apply our current shot count to py arguments
 	options.args[1] = testCount;
-
+	console.log("running python code");
 	PythonShell.run('main.py', options, function (err, results) {
 		if (err) throw err;
 		console.log('results: %j', results);
 	});
+
 }
 
 io.sockets.on('connection', function (socket) {
@@ -48,7 +49,7 @@ io.sockets.on('connection', function (socket) {
     //   console.log(lightvalue); // clickec button
     // }
     console.log("button clicked by client!")
-
+    runPyPumps();
     //testPump();
   });
 });
