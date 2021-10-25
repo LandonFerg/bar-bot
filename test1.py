@@ -18,6 +18,7 @@ TEQUILA = kit.servo[6]
 GIN = kit.servo[7]
 TRIPLE_SEC = kit.servo[8]
 
+DRINKLABELS = ['LIGHT_RUM', 'DARK_RUM', 'VODKA', 'TEQUILA', 'GIN', 'TRIPLE_SEC']
 DRINKS = [LIGHT_RUM, DARK_RUM, VODKA, TEQUILA, GIN, TRIPLE_SEC]
 
 pourTimers = [0] * 6
@@ -40,10 +41,10 @@ def PourLiquor(x, index):
         print("start PourLiquor")
         for a in arguments:
                 TotalWaitTime = 0
-                if(a > 0):
+                if(int(a) > 0):
                         DRINKS[i].angle = 160
-                        print("dispensing " + str(a)+ " shots of " + str(DRINKS[i]))
-                        timeToWait = a * shotStrength
+                        print("dispensing " + str(a)+ " shots of " + DRINKLABELS[i])
+                        timeToWait = int(a) * shotStrength
                         pourTimers[i] = timeToWait # start timer for arg * shotStrength
 
                 
@@ -61,7 +62,7 @@ def StopLiquor():
         i = 0
         while(timeElapsed < TotalWaitTime):
                 for a in arguments:
-                        if (a > 0 and timeElapsed >= pourTimers[i]):
+                        if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
                         i = i + 1
                 timeElapsed = time.perf_counter - pourStartTime # update time
