@@ -18,20 +18,21 @@ const pumpGPIO = [5,6,13,19];
 let pumps = []; // array to hold all our pumps
 initPumps(pumpGPIO); // initialize pumps for the gpio
 
-var testCount = 5;
+var testCount = 1;
 
 // Setup python-shell arguments
 var options = {
 	scriptPath: './',
-	args: ['--c','0'],
+	args: ['-v','0','1','0','0','0','0'],
 }
 
 function runPyPumps()
 {
 	// apply our current shot count to py arguments
 	options.args[1] = testCount;
+	
 	console.log("running python code");
-	PythonShell.run('main.py', options, function (err, results) {
+	PythonShell.run('test1.py', options, function (err, results) {
 		if (err) throw err;
 		console.log('results: %j', results);
 	});
