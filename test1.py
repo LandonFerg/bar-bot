@@ -64,6 +64,7 @@ def StopLiquor():
                 for a in arguments:
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
+                                print("stopping the dispenser for " + DRINKLABELS[i])
                         i = i + 1
                 timeElapsed = time.perf_counter - pourStartTime # update time
         SilenceServos() # please
