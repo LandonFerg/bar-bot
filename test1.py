@@ -39,15 +39,14 @@ def SilenceServos():
 def PourLiquor(x, index):
         i = 0
         print("start PourLiquor")
+        TotalWaitTime = 0
         for a in arguments:
-                TotalWaitTime = 0
                 if(int(a) > 0):
                         DRINKS[i].angle = 160
                         print("dispensing " + str(a)+ " shots of " + DRINKLABELS[i])
                         timeToWait = int(a) * shotStrength
                         pourTimers[i] = timeToWait # start timer for arg * shotStrength
 
-                
                 if (timeToWait >= TotalWaitTime):
                         TotalWaitTime = timeToWait
 
