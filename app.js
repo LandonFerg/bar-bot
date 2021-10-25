@@ -53,7 +53,7 @@ io.sockets.on('connection', function (socket) {
     console.log("button clicked by client!")
 	console.log("client wants " + arg1 + " shots of LIGHTRUM" )
 	
-    runPyPumps();
+    //runPyPumps();
     //testPump();
   });
 });
