@@ -60,6 +60,11 @@ def StopLiquor(wt):
         timeElapsed = time.perf_counter() - pourStartTime
         i = 0
         print("wait time: " + wt)
+        print("pour timers: ")
+        print(pourTimers)
+
+        print("time elapsed: " + str(timeElapsed))
+
         while(timeElapsed < wt):
                 for a in arguments:
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
