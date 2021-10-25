@@ -28,6 +28,7 @@ shotStrength = 9 # seconds to wait per shot
 TotalWaitTime = 0
 
 def SilenceServos():
+        print("silencing servos..")
         for d in DRINKS:
                 d.angle = 0
                 time.sleep(2)
@@ -35,7 +36,7 @@ def SilenceServos():
 
 
 # accepts index of drink and opens corresponding valve for seconds as compared to X
-def PourLiquor(x, index):
+def PourLiquor():
         i = 0
         print("start PourLiquor")
         TotalWaitTime = 0
@@ -77,15 +78,7 @@ def StopLiquor(st, wt):
 
 
 if(sys.argv[1] == '-v' and len(arguments) > 0):
-        
-        print("has values")
-        i = 0
-        for v in arguments:
-                print(v)
-                vx = int(v)
-                if(int(v) > 0):
-                    PourLiquor(vx, i)
-                i = i + 1 # iterate
+        PourLiquor();
                 # do something with number of shots here..
 
 else:
