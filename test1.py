@@ -52,14 +52,15 @@ def PourLiquor(x, index):
 
                 i = i + 1
         pourStartTime = time.perf_counter() # start timer after pouring shots
-        StopLiquor()
+        StopLiquor(TotalWaitTime)
 
 
-def StopLiquor():
+def StopLiquor(wt):
         print("start stopLiquor")
         timeElapsed = time.perf_counter() - pourStartTime
         i = 0
-        while(timeElapsed < TotalWaitTime):
+        print("wait time: " + wt)
+        while(timeElapsed < wt):
                 for a in arguments:
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
