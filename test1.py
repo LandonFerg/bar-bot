@@ -9,27 +9,65 @@ kit = ServoKit(channels=16)
 # e.x: input "-v 0 1 0 0" means 1 shot of tequila
 
 # remove script name and -v from list
-arguments = sys.argv[2:]
+arguments = sys.argv[2:] # 0 1 0 0 - (our shot amounts)
 
-RUM = kit.servo[3]
-TEQUILA = kit.servo[4]
+LIGHT_RUM = kit.servo[3]
+DARK_RUM = kit.servo[4]
 VODKA = kit.servo[5]
+TEQUILA = kit.servo[6]
+GIN = kit.servo[7]
+TRIPLE_SEC = kit.servo[8]
+
+DRINKS = [LIGHT_RUM, DARK_RUM, VODKA, TEQUILA, GIN, TRIPLE_SEC]
+
+pourTimers = [0] * 5
+pourStartTime = 0
+timePassed = 0
+shotStrength = 9 # seconds to wait per shot
+
+TotalWaitTime = 0
+
+def SilenceServos():
+        for d in DRINKS:
+                d.angle = 0
+                time.sleep(2)
+                d.angle = None
+
 
 # accepts index of drink and opens corresponding valve for seconds as compared to X
 def PourLiquor(x, index):
-        alcohol = ''
-        if(index == 0):
-                alcohol = 'RUM'
-                RUM.angle = 160
-                print("pouring rum")
-                time.sleep(9 * x)
-                RUM.angle = 0
-                time.sleep(2)
-                print("stopping rum")
-                RUM.angle = None # turn off valve servo
-        elif(index == 1):
-                alcohol = 'VODKA'
-        print("done pouring " + str(x) + " shots of " + alcohol)
+        i = 0
+        print("start PourLiquor")
+        for a in arguments:
+                TotalWaitTime = 0
+                if(a > 0):
+                        DRINKS[i].angle = 160
+                        print("dispensing " + str(a)+ " shots of " + str(DRINKS[i]))
+                        timeToWait = a * shotStrength
+                        pourTimers[i] = timeToWait # start timer for arg * shotStrength
+
+                
+                if (timeToWait >= TotalWaitTime):
+                        TotalWaitTime = timeToWait
+
+                i = i + 1
+        pourStartTime = time.perf_counter() # start timer after pouring shots
+        StopLiquor()
+
+
+def StopLiquor():
+        print("start stopLiquor")
+        timeElapsed = time.perf_counter() - pourStartTime
+        i = 0
+        while(timeElapsed < TotalWaitTime):
+                for a in arguments:
+                        if (a > 0 and timeElapsed >= pourTimers[i]):
+                                DRINKS[i].angle = 0
+                        i = i + 1
+                timeElapsed = time.perf_counter - pourStartTime # update time
+        SilenceServos() # please
+        
+
 
 
 if(sys.argv[1] == '-v' and len(arguments) > 0):
