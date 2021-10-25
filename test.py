@@ -37,7 +37,7 @@ def PourMixers():
             time.sleep(drinkStrength * a)
             GPIO.output(motors[i], GPIO.HIGH) # turn off motor
         i = i + 1
-
+    GPIO.cleanup()
 
 
 if(sys.argv[1] == '-v' and len(arguments) > 0):
