@@ -122,7 +122,6 @@ $(document).ready(function() {
     });
     drinkVals[3] = $value4.val
 
-    // MIXERS
     const $valueSpan5 = $('.valueSpan5');
     const $value5 = $('#sl5');
     $valueSpan5.html($value5.val());
@@ -131,5 +130,51 @@ $(document).ready(function() {
     $valueSpan5.html($value5.val());
     });
     drinkVals[4] = $value5.val
+
+    const $valueSpan6 = $('.valueSpan6');
+    const $value6 = $('#sl6');
+    $valueSpan6.html($value6.val());
+    $value6.on('input change', () => {
+
+    $valueSpan6.html($value6.val());
+    });
+    drinkVals[5] = $value6.val
+
+    // Update mixer sliders...
+    const $valueSpan7 = $('.valueSpan7');
+    const $value7 = $('#sl7');
+    $valueSpan7.html($value6.val());
+    $value7.on('input change', () => {
+
+    $valueSpan7.html($value7.val());
+    });
+    drinkVals[6] = $value7.val
+
+    const $valueSpan8 = $('.valueSpan8');
+    const $value8 = $('#sl8');
+    $valueSpan8.html($value8.val());
+    $value8.on('input change', () => {
+
+    $valueSpan8.html($value8.val());
+    });
+    drinkVals[7] = $value8.val
+
+    const $valueSpan9 = $('.valueSpan9');
+    const $value9 = $('#sl9');
+    $valueSpan9.html($value9.val());
+    $value9.on('input change', () => {
+
+    $valueSpan9.html($value9.val());
+    });
+    drinkVals[8] = $value9.val
+
+    const $valueSpan10 = $('.valueSpan10');
+    const $value10 = $('#sl10');
+    $valueSpan10.html($value10.val());
+    $value10.on('input change', () => {
+
+    $valueSpan10.html($value10.val());
+    });
+    drinkVals[9] = $value10.val
     
 });
