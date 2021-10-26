@@ -143,7 +143,7 @@ $(document).ready(function() {
     // Update mixer sliders...
     const $valueSpan7 = $('.valueSpan7');
     const $value7 = $('#sl7');
-    $valueSpan7.html($value6.val());
+    $valueSpan7.html($value7.val());
     $value7.on('input change', () => {
 
     $valueSpan7.html($value7.val());
