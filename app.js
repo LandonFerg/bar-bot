@@ -66,7 +66,7 @@ io.sockets.on('connection', function (socket) {
     //   console.log(lightvalue); // clickec button
     // }
   console.log("button clicked by client!")
-  console.log("client wants " + arg1 + " shots of LIGHTRUM" )
+  console.log("client wants " + drink1 + " shots of LIGHTRUM" )
 
 
   // apply our selected values to python arguments
