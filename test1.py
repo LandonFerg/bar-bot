@@ -77,7 +77,7 @@ def StopLiquor(st, wt):
                         a = float(a) * shotDivision  # for half shot
                         if (int(a) > 0 and timeElapsed >= pourTimers[i]):
                                 DRINKS[i].angle = 0
-                                print("stopping the dispenser for " + DRINKLABELS[i])
+                                #print("stopping the dispenser for " + DRINKLABELS[i])
                         i = i + 1
                 timeElapsed = time.time() - st # update time
         SilenceServos() # please

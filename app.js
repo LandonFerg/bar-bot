@@ -26,18 +26,33 @@ var options = {
 	args: ['-v','0','1','0','0','0','0'],
 }
 
-function runPyPumps()
-{
-	// apply our current shot count to py arguments
-	options.args[1] = testCount;
+// python arguments for pumps
+var pump_options = {
+	scriptPath: './',
+	args: ['-v','0','1','0','0'],
+}
 
+function runPyValves()
+{
 	
-	console.log("running python code");
+	console.log("running python valve code");
 	PythonShell.run('test1.py', options, function (err, results) {
 		if (err) throw err;
-		console.log('results: %j', results);
+		console.log('finished valve python code');
+		console.log('starting pump python script...');
+		runPyPumps();
 	});
 
+}
+
+function runPyPumps()
+{
+	console.log("running python code");
+	PythonShell.run('test.py', pump_options, function (err, results) {
+		if (err) throw err;
+		console.log('finished pumping python code :)');
+
+	});
 }
 
 io.sockets.on('connection', function (socket) {
@@ -45,17 +60,31 @@ io.sockets.on('connection', function (socket) {
   console.log("client connected");
 
   // TODO: pass client data for drink selection
-  socket.on('newDrink', function(arg1) { // get button from client
+  socket.on('newDrink', function(drink1, drink2, drink3, drink4, drink5, drink6, mixer1, mixer2, mixer3, mixer4) { // get button from client
     // lightvalue = data;
     // if (drinkValue) {
     //   console.log(lightvalue); // clickec button
     // }
   console.log("button clicked by client!")
-	console.log("client wants " + arg1 + " shots of LIGHTRUM" )
-  options.args[1] = arg1;
+  console.log("client wants " + arg1 + " shots of LIGHTRUM" )
+
+
+  // apply our selected values to python arguments
+  options.args[1] = drink1;
+  options.args[2] = drink2;
+  options.args[3] = drink3;
+  options.args[4] = drink4;
+  options.args[5] = drink5;
+  options.args[6] = drink6;
+
+  // pass in mixer args
+  pump_options[1] = mixer1;
+  pump_options[2] = mixer2;
+  pump_options[3] = mixer3;
+  pump_options[4] = mixer4;
 	
-    //runPyPumps();
-    //testPump();
+  // run our python code
+  runPyValves();
   });
 });
 
