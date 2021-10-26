@@ -26,15 +26,18 @@ timePassed = 0
 
 shotDivision = 2 # half shot
 
-shotStrength = 8 / shotDivision # seconds to wait per shot div (half shot)
+shotStrength = 8 / shotDivision # seconds to wait per shot div (half shot) (8 = strength)
 
 TotalWaitTime = 0
 
 def SilenceServos():
         print("silencing servos..")
+        # ensure we're all closed
         for d in DRINKS:
                 d.angle = 0
-                time.sleep(2)
+        time.sleep(2)
+        # cleans up GPIO
+        for d in DRINKS:
                 d.angle = None
 
 
