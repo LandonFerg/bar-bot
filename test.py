@@ -32,9 +32,9 @@ def PourMixers():
     i = 0
     for a in arguments:
         dArg = float(a) # drink argument ("-v 0 1 0 6 0")
-        if(a > 0):
+        if(dArg > 0):
             GPIO.output(motors[i], GPIO.LOW) # turn on motor
-            time.sleep(drinkStrength * a)
+            time.sleep(drinkStrength * dArg)
             GPIO.output(motors[i], GPIO.HIGH) # turn off motor
         i = i + 1
     GPIO.cleanup()
