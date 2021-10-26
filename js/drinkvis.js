@@ -143,7 +143,7 @@ $('.range-field').change(function () {
 
 
 class Layer {
-  constructor(drinkAmount, name, yOffset, size=10) {
+  constructor(drinkAmount, name, yOffset, size=14) {
     this.size = size; // layer size
 
     this.x2 = window.innerWidth * 0.8;
@@ -165,9 +165,9 @@ class Layer {
     rect(this.x, this.y, this.x2, this.y2); // x, y, width, height
 
     // Make label
-    textAlign(CENTER, TOP);
+    textAlign(CENTER, CENTER);
     textSize(28);
     fill(255);
-    text(this.name, window.innerWidth/2, this.y * 1.02);
+    text(this.name, window.innerWidth/2, (this.y + this.y2) / 2);
   }
 }
