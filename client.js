@@ -1,6 +1,6 @@
 console.log("client code go here haha");
 
-var newDrinkButton = document.getElementById('testBtn');
+var newDrinkButton = document.getElementById('pourBtn');
 socket = io();
 newDrinkButton.addEventListener("click", function() {
 

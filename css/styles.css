@@ -3037,11 +3037,18 @@ textarea.form-control-lg {
   opacity: 0.65;
 }
 
+.btn-pour {
+  color: #fff;
+  background-color: #268b0d;
+  border-color: #268b0d;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #ee0979;
   border-color: #ee0979;
 }
+
 .btn-primary:hover {
   color: #fff;
   background-color: #ca0867;
@@ -11315,10 +11322,19 @@ html {
   /* make scrollbar transparent */
 }
 
+/* drink buttons */
 .btn-xl {
   text-transform: uppercase;
   padding: 1.5rem 3rem;
   font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.btn-xxl {
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  font-size: 5rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
 }
