@@ -78,10 +78,12 @@ io.sockets.on('connection', function (socket) {
   options.args[6] = drink6;
 
   // pass in mixer args
-  pump_options[1] = mixer1;
-  pump_options[2] = mixer2;
-  pump_options[3] = mixer3;
-  pump_options[4] = mixer4;
+  pump_options.args[1] = mixer1;
+  pump_options.args[2] = mixer2;
+  pump_options.args[3] = mixer3;
+  pump_options.args[4] = mixer4;
+
+  //console.log("pump options: " + pump)
 	
   // run our python code
   runPyValves();

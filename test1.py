@@ -26,7 +26,7 @@ timePassed = 0
 
 shotDivision = 2 # half shot
 
-shotStrength = 8 / shotDivision # seconds to wait per shot div (half shot) (8 = strength)
+shotStrength = 30 / shotDivision # seconds to wait per shot div (half shot) (8 = strength)
 
 TotalWaitTime = 0
 
