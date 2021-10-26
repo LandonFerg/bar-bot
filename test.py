@@ -15,6 +15,8 @@ m3 = 13
 m4 = 19
 
 motors = [m1, m2, m3, m4]
+# 2.26*x + 3.6
+
 
 # setup motors and initialize as off
 for m in motors:
@@ -35,7 +37,7 @@ def PourMixers():
         if(dArg > 0):
             print("turning on pump " + str(i + 1))
             GPIO.output(motors[i], GPIO.LOW) # turn on motor
-            time.sleep(drinkStrength * dArg)
+            time.sleep(dArg * 2.26 + 3.6) # 2.26*x + 3.6
             print("turning off pump " + str(i + 1))
             GPIO.output(motors[i], GPIO.HIGH) # turn off motor
         i = i + 1
