@@ -23,13 +23,13 @@ var testCount = 1;
 // Setup python-shell arguments
 var options = {
 	scriptPath: './',
-	args: ['-v','0','1','0','0','0','0'],
+	args: ['-v','0','0','0','0','0','0'],
 }
 
 // python arguments for pumps
 var pump_options = {
 	scriptPath: './',
-	args: ['-v','0','1','0','0'],
+	args: ['-v','0','0','0','0'],
 }
 
 function runPyValves()
