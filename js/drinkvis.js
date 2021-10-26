@@ -13,7 +13,7 @@ let layers = [];
 
 function preload() {
   cup = loadImage('../assets/img/cup.png');
-  cup_mask = loadImage('../assets/img/cup_mask.png');
+  cup_mask = loadImage('../assets/img/cup_mask_L.png');
 }
 
 function setup() 
@@ -49,7 +49,15 @@ function draw()
         if(layers.length > 0)
         {
           var lastLayer = layers[layers.length - 1];
-          layers.push(new Layer(drinkVals[i], liquorNames[i], lastLayer.y + drinkVals[i] * lastLayer.size));
+          if(lastLayer.yOffset == 0)
+          {
+            layers.push(new Layer(drinkVals[i], liquorNames[i], lastLayer.y2 - lastLayer.y)); // set yOffset to last element's y value
+          }
+
+          else
+          {
+            layers.push(new Layer(drinkVals[i], liquorNames[i], lastLayer.yOffset + (lastLayer.y2 - lastLayer.y)));
+          }
           
         }
 
@@ -62,88 +70,46 @@ function draw()
       }
     }
 
-    // Setup mixer layers
-    /*
-    for(let i = 1; i < mxrNames.length + 1; i++)
+    // Setup mixer layers (rest of drink vals)
+    // start from mixr part of array
+
+    let mixerSize = 20;
+
+    for(let i = liquorNames.length; i < drinkVals.length; i++)
     {
       if(drinkVals[i] > 0)
       {
-        layers.push(new Layer(drinkVals[i + drinkVals.length], mxrNames[i - 1], 0))
+        // already layers -- ensure we are above the last layer
+        if(layers.length > 0)
+        {
+          var lastLayer = layers[layers.length - 1];
+          
+          if(lastLayer.yOffset == 0) // if the last layer was our 0 layer (has no offset)
+          {
+            layers.push(new Layer(drinkVals[i], mxrNames[i - liquorNames.length], lastLayer.y2 - lastLayer.y, 20)); // add no additional offset
+          }
+
+          else // our last layer has an offset -- apply offset
+          {
+            layers.push(new Layer(drinkVals[i], mxrNames[i - liquorNames.length], lastLayer.yOffset + (lastLayer.y2 - lastLayer.y), 20));
+          }
+          
+        }
+
+        // no new layers, make level 0 layer
+        else
+        {
+          layers.push(new Layer(drinkVals[i], mxrNames[i - liquorNames.length], 0, 20));
+        }
+        
       }
-    }*/
+    }
 
     // Display layers
     for(let i = 0; i < layers.length; i++)
     {
       layers[i].display();
     }
-
-    //   // drink vals
-    //   dd1 = currentDrink.d1;
-    //   dd2 = currentDrink.d2;
-    //   dd3 = currentDrink.d3;
-    //   dd4 = currentDrink.d4;
-
-    //   // mixer vals
-    //   mm1 = currentDrink.m1;
-
-    //   if(i == 0 && dd1 > 0)  // Vodka (initial layer)
-    //   {
-    //     fill(random(100) + 10, random(100) + 10, random(100) + 10);
-    //     rect(window.innerWidth/2, 278 + layerSize, 300, layerSize * dd1);
-    //     // Make label
-    //     textAlign(CENTER, CENTER);
-    //     textSize(28);
-    //     fill(255);
-    //     text(liquorNames[0], window.innerWidth/2, 278 + layerSize - (layerSize * shotCount));
-    //     shotCount++;
-    //     console.log("updating vodka vis...");
-    //   }
-
-    //   else if(i == 1 && dd2 > 0) // Tequila
-    //   {
-    //     fill(random(100) + 10, random(100) + 10, random(100) + 10);
-    //     rect(window.innerWidth/2, (278 + layerSize) -  (layerSize * shotCount), 300 * dd2, layerSize * dd2);
-    //     textAlign(CENTER, CENTER);
-    //     textSize(28);
-    //     fill(255);
-    //     text(liquorNames[1], window.innerWidth/2, 278 + layerSize - (layerSize * shotCount));
-    //     shotCount++;
-    //   }
-
-    //   else if(i == 2 && dd3 > 0) // RUM
-    //   {
-    //     fill(random(100) + 10, random(100) + 10, random(100) + 10);
-    //     rect(window.innerWidth/2, (278 + layerSize) -  (layerSize * shotCount), 300 * dd3, layerSize * dd3);
-    //     textAlign(CENTER, CENTER);
-    //     textSize(28);
-    //     fill(255);
-    //     text(liquorNames[2], window.innerWidth/2, 278 + layerSize - (layerSize * shotCount));
-    //     shotCount++;
-    //   }
-
-    //   else if(i == 3 && dd4 > 0) // KAHLUA
-    //   {
-    //     fill(random(100) + 10, random(100) + 10, random(100) + 10);
-    //     rect(window.innerWidth/2, (278 + layerSize) -  (layerSize * shotCount), 300 * dd4, layerSize * dd4);
-    //     textAlign(CENTER, CENTER);
-    //     textSize(28);
-    //     fill(255);
-    //     text(liquorNames[3], window.innerWidth/2, 278 + layerSize - (layerSize * shotCount));
-    //     shotCount++;
-    //   }
-
-    //   else if(i == 4 && mm1 > 0) // COKE
-    //   {
-    //     fill(random(100) + 10, random(100) + 10, random(100) + 10);
-    //     rect(window.innerWidth/2, (278 + mLayerSize) -  (layerSize * shotCount), 300, mLayerSize * mm1);
-    //     textAlign(CENTER, CENTER);
-    //     textSize(28);
-    //     fill(255);
-    //     text(mixerNames[0], window.innerWidth/2, (278 + mLayerSize) -  (layerSize * shotCount));
-    //     shotCount++;
-    //   }
-    // }
 
     // Draw cup
     imageMode(CENTER);
@@ -158,6 +124,8 @@ function draw()
 $('#drinkSelect').on('click', '.clickable-row', function(event) 
 {
   layers = [];
+  var d = drinks[drinkIndex];
+  drinkVals = [d.d1, d.d2, d.d3, d.d4, d.d5, d.d6, d.m1, d.m2, d.m3, d.m4];
   redraw();
 });
 
@@ -175,17 +143,19 @@ $('.range-field').change(function () {
 
 
 class Layer {
-  constructor(drinkAmount, name, y) {
-    this.size = 10; // layer size
+  constructor(drinkAmount, name, yOffset, size=10) {
+    this.size = size; // layer size
 
-    this.x2 = window.innerWidth;
-    this.y2 = 340;
+    this.x2 = window.innerWidth * 0.8;
+    this.y2 = 340 - yOffset; // bottom of cup
 
-    this.x = 0;
-    this.y = 300 - (drinkAmount * this.size); // height (closer to 0 = higher)
+    this.x = window.innerWidth * 0.2;
+    this.y = (300 - (drinkAmount * this.size)) - yOffset; // height (closer to 0 = higher)
 
     this.drinkAmount = drinkAmount; // amount of drink
     this.name = name;
+
+    this.yOffset = yOffset;
   }
   display() {
 
