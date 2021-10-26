@@ -46,6 +46,7 @@ def PourLiquor():
         i = 0
         print("start PourLiquor")
         TotalWaitTime = 0
+        timeToWait = 0
         for a in arguments:
                 a = float(a) * shotDivision  # convert to half shot
                 if(int(a) > 0):
