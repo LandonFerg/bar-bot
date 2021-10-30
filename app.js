@@ -10,6 +10,7 @@ const server = http.createServer((req, res) => {
 });
 const io = require('socket.io')(server) //require socket.io module and pass the http object (server)
 const port = 8080;
+var $ = require("jquery");
 
 // Raspi stuff
 var GPIO = require('onoff').Gpio; //include onoff to interact with the GPIO
