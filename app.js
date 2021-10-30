@@ -59,16 +59,21 @@ io.sockets.on('connection', function (socket) {
   // check if we have saved drink values and load them into the drinks table
   //savedDrinks.json
 
+  
   fs.readFile('savedDrinks.json', (err, data) => {
     if (err)
 	{
 		console.log(err)
 	}
 
-    let loadedDrink = JSON.parse(data);
+    var loadedDrink = JSON.parse(data);
+	if(loadedDrink)
+	{
+		console.log(loadedDrink);
+	}
+	
   });
-
-  console.log(loadedDrink);
+  
   /// foreach d in loadedDrink
 
 
