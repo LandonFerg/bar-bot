@@ -1,10 +1,5 @@
 // Global Drink class
 
-
-var module = { exports: {} };
-var exports = module.exports;
-
-
 class Drink {
     constructor(name, d1, d2, d3, d4, d5, d6, m1, m2, m3, m4) {
       this.name = name;
@@ -27,5 +22,5 @@ class Drink {
 
   var drinks = [];
 
-  module.exports.Drink = Drink;
-  module.exports.drinks = drinks;
+  exports.Drink = Drink;
+  exports.drinks = drinks;
