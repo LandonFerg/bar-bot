@@ -1,4 +1,5 @@
 /* Server side code for bar-bot */
+require('./scripts.js');
 const http = require('http');
 var fs = require('fs'); //require filesystem module
 let {PythonShell} = require('python-shell'); // module for python script exec.
