@@ -61,17 +61,14 @@ io.sockets.on('connection', function (socket) {
 
   
   fs.readFile('savedDrinks.json', (err, data) => {
-    if (err)
-	{
-		console.log(err)
-	}
+    if (err) throw err;
 
     var loadedDrink = JSON.parse(data);
 	if(loadedDrink)
 	{
 		console.log(loadedDrink);
 	}
-	
+
   });
   
   /// foreach d in loadedDrink
