@@ -6,7 +6,7 @@ let mLayerSize = 20; // Mixer layer size
 let yPadding = layerSize;
 
 let liquorNames = ["Light Rum", "Dark Rum", "Vodka", "Tequila", "Gin", "Triple Sec"];
-let mxrNames = ["Coke", "Sprite", "Ginger Beer", "Orange Juice"];
+let mxrNames = ["Coke", "Sprite", "Ginger Beer", "Margarita Mix"];
 
 let layers = [];
 
@@ -64,6 +64,7 @@ function draw()
         // no new layers, make level 0 layer
         else
         {
+          // Bottom layer
           layers.push(new Layer(drinkVals[i], liquorNames[i], 0));
         }
         
@@ -143,7 +144,7 @@ $('.range-field').change(function () {
 
 
 class Layer {
-  constructor(drinkAmount, name, yOffset, size=14) {
+  constructor(drinkAmount, name, yOffset, size=10) {
     this.size = size; // layer size
 
     this.x2 = window.innerWidth * 0.8;

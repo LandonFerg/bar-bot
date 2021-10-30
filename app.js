@@ -51,15 +51,23 @@ function runPyPumps()
 	PythonShell.run('test.py', pump_options, function (err, results) {
 		if (err) throw err;
 		console.log('finished pumping python code :)');
-
+		
 	});
 }
 
 io.sockets.on('connection', function (socket) {
+  // check if we have saved drink values and load them into the drinks table
+  //savedDrinks.json
+  let rawdata = fs.readFileSync('savedDrinks.json');
+  let loadedDrink = JSON.parse(rawdata);
+
+  console.log(loadedDrink);
+  /// foreach d in loadedDrink
+
+
   var drinkValue = 0; //static variable for current status
   console.log("client connected");
 
-  // TODO: pass client data for drink selection
   socket.on('newDrink', function(drink1, drink2, drink3, drink4, drink5, drink6, mixer1, mixer2, mixer3, mixer4) { // get button from client
     // lightvalue = data;
     // if (drinkValue) {
@@ -86,8 +94,44 @@ io.sockets.on('connection', function (socket) {
   //console.log("pump options: " + pump)
 	
   // run our python code
-  runPyValves();
+
+  // 1 shot: 1.5 oz
+  // 1.5 shot: 2oz
+  
+
+   runPyValves();
+
   });
+
+  // Save Drink
+  // adds drink to drink class for local storage and adds to saved json
+  
+  socket.on('saveDrink', function(drink1, drink2, drink3, drink4, drink5, drink6, mixer1, mixer2, mixer3, mixer4, dName) {
+  
+  var createdDrink = new Drink(dName, drink1,drink2,drink3,drink4,drink5,drink6,
+	  mixer1,mixer2,mixer3,mixer4);
+
+  drinks.push(createdDrink);
+
+  RefreshTable();
+
+  let newSavedDrink = {
+	  d1: drink1,
+	  d2: drink2,
+	  d3: drink3,
+	  d4: drink4,
+	  d5: drink5,
+	  d6: drink6,
+
+	  m1: mixer1,
+	  m2: mixer2,
+	  m3: mixer3,
+	  m4: mixer4
+  };
+
+  let data = JSON.stringify(newSavedDrink);
+  fs.writeFileSync('savedDrinks.json', data);
+})
 });
 
 // initialize pump values

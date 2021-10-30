@@ -58,7 +58,7 @@
         <section id="select">
             <div class="container px-3 bg-black">
                 <h1 class = "text-center text-white pb-2">Drink Selection</h1>
-                <div>
+                <div class = "drinkTableHolder">
                     <table class = "table table-bordered" id = "drinkSelect">
                           <tbody>
                               <!-- <tr class="clickable-row">
@@ -156,13 +156,15 @@
                             <input id="sl10" class="border-0" type="range" min="0" max="5" step="0.5" value = "0" style="width:100%;"/>
                         </form>
                         <span class="font-weight-bold text-primary valueSpan10"></span>
-                        <label for="sl10" class="myLabel2 Label10">Orange Juice</label>
+                        <label for="sl10" class="myLabel2 Label10">Margarita Mix</label>
                     </div>
 
                     <!-- Pour Drink Button -->
                     <div class = "container px-2 pt-5 pb-4">
                         <div class = "btn-toolbar justify-content-center">
-                            <a class="btn btn-primary larger-btn btn-xL rounded-pill" href="#" id="testBtn">I'm ready</a>
+                            <a class="btn btn-primary btn-space larger-save-btn btn-xL rounded-pill" href="#" id="saveBtn">Save Drink</a>
+                            <a class="btn btn-primary larger-btn btn-xL rounded-pill" href="#" id="testBtn">Dispense</a>
+                            
                         </div>
                     </div>
 
@@ -192,6 +194,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Core JS Scripts-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+        <!-- Pretty alerts -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="client.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/p5.js"></script>

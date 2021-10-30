@@ -28,24 +28,50 @@ class Drink {
   }
 }
 
+// let liquorNames = ["Light Rum", "Dark Rum", "Vodka", "Tequila", "Gin", "Triple Sec"];
+// let mxrNames = ["Coke", "Sprite", "Ginger Beer", "Margarita mix"];
+
 // Example drinks TODO: Read from json instead
-const RC = new Drink("Rum & Coke", 2,0,0,0,0,0,  4,0,0,0);
-const MM = new Drink("Moscow Mule", 0,0,1.5,0,0,0,  0,0,5,0);
+const RC = new Drink("Rum & Coke", 0,1.5,0,0,0,0,  3,0,0,0);
+const MM = new Drink("Moscow Mule", 0,0,1.5,0,0,0,  0,0,3,0);
+const MA = new Drink("Margarita", 0,0,0,1,0,0.5,  0,0,0,0.5);
+const DS = new Drink("Dark & Stormy", 0,1.5,0,0,0,0,  0,0,3,0);
+const GM = new Drink("Gin Mule", 0,0,0,0,1.5,0,  0,0,3,0);
+const LI = new Drink("Long Island Iced Tea", 0.5,0,0.5,0.5,0.5,0.5,  1,0,0,0.5);
+const RS = new Drink("Rum & Sprite", 1.5,0,0,0,0,0,  0,3,0,0);
+const TM = new Drink("Tequila Mule", 0,0,0,1.5,0,0,  0,0,3,0);
+
+// Load saved drinks from saved json
 
 drinks.push(RC);
 drinks.push(MM);
+drinks.push(MA);
+drinks.push(DS);
+drinks.push(GM);
+drinks.push(LI);
+drinks.push(RS);
+drinks.push(TM);
+
+
 //console.log(drinks[1].name);
 
-// Populate drink table
-drinks.forEach((d) => {
-$("#drinkSelect").find('tbody')
-    .append($('<tr>')
-        .attr('class', 'clickable-row')
-            .append($('<th>')
-                .text(d.name)
-            )
-        );
-    });
+function RefreshTable() 
+{
+    // clear past table
+    $('#drinkSelect tbody').empty();
+
+    // Populate drink table
+    drinks.forEach((d) => {
+    $("#drinkSelect").find('tbody')
+        .append($('<tr>')
+            .attr('class', 'clickable-row')
+                .append($('<th>')
+                    .text(d.name)
+                )
+            );
+        });
+}
+RefreshTable();
 
 
 // Make drink selector clickable

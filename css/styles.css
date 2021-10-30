@@ -3008,6 +3008,13 @@ textarea.form-control-lg {
   border-color: #249215 !important;
 }
 
+.larger-save-btn {
+  font-size: 1.9rem !important;
+
+  background-color: #1f2799 !important;
+  border-color: #1f2799 !important;
+}
+
 
 .btn {
   display: inline-block;
@@ -11517,5 +11524,26 @@ html {
   padding-left: 0.5rem;
 }
 
+.drinkTableHolder {
+  overflow-y: scroll;
+  height: 200px;
+
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+
+  padding-bottom: 20px;
+  /* scrollbar-base-color: darkgray; */
+}
+
+.drinkTableHolder::-webkit-scrollbar{
+  width: 15px;
+  background: darkgray;
+  /* make scrollbar transparent */
+}
+
+.drinkTableHolder::-webkit-scrollbar-thumb{
+  background: dimgray;
+  /* make scrollbar transparent */
+}
 
 /* note: label 1,2,3,4 etc. clases are for later use when wanting to change drink names via code in jquery */
