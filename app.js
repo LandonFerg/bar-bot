@@ -1,5 +1,4 @@
 /* Server side code for bar-bot */
-require('./js/scripts.js');
 const http = require('http');
 var fs = require('fs'); //require filesystem module
 let {PythonShell} = require('python-shell'); // module for python script exec.
@@ -10,7 +9,6 @@ const server = http.createServer((req, res) => {
 });
 const io = require('socket.io')(server) //require socket.io module and pass the http object (server)
 const port = 8080;
-let $ = require("jquery");
 
 // Raspi stuff
 var GPIO = require('onoff').Gpio; //include onoff to interact with the GPIO
@@ -129,7 +127,7 @@ io.sockets.on('connection', function (socket) {
 
   drinks.push(createdDrink);
 
-  // RefreshTable(); cant use client jquery
+  // RefreshTable(); cant use client
 
   let newSavedDrink = {
 	  d1: drink1,
