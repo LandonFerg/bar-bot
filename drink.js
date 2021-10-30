@@ -27,5 +27,5 @@ class Drink {
 
   var drinks = [];
 
-  exports.Drink = Drink;
-  exports.drinks = drinks;
+  module.exports.Drink = Drink;
+  module.exports.drinks = drinks;
