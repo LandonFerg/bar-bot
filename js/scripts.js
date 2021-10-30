@@ -5,7 +5,6 @@ var drinkName = "N/A";
 
 var drinkVals = [];
 var mixerNames = ['Coke']
-var drinks = [];
 
 
 // let liquorNames = ["Light Rum", "Dark Rum", "Vodka", "Tequila", "Gin", "Triple Sec"];

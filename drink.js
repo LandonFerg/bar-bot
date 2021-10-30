@@ -18,3 +18,8 @@ class Drink {
       this.m4 = m4;
     }
   }
+
+  var drinks = [];
+
+  module.exports = Drink;
+  module.exports = drinks;
