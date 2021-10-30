@@ -18,8 +18,6 @@ const pumpGPIO = [5,6,13,19];
 let pumps = []; // array to hold all our pumps
 initPumps(pumpGPIO); // initialize pumps for the gpio
 
-const Drink = require('./drink').Drink;
-
 var testCount = 1;
 
 // Setup python-shell arguments
@@ -61,22 +59,22 @@ io.sockets.on('connection', function (socket) {
   // check if we have saved drink values and load them into the drinks table
   //savedDrinks.json
 
-	var file = 'savedDrinks.json';
-	var content = '';
+	// var file = 'savedDrinks.json';
+	// var content = '';
 
-	// Check that the file exists locally
-	if(!fs.existsSync(file)) {
-		console.log("File not found");
-	}
+	// // Check that the file exists locally
+	// if(!fs.existsSync(file)) {
+	// 	console.log("File not found");
+	// }
 
-	// The file *does* exist
-	else {
-		// Read the file and do anything you want
-		content = fs.readFileSync(file, 'utf-8');
+	// // The file *does* exist
+	// else {
+	// 	// Read the file and do anything you want
+	// 	content = fs.readFileSync(file, 'utf-8');
 
-		// load drink stuff
-		console.log(content);
-	}
+	// 	// load drink stuff
+	// 	console.log(content);
+	// }
   
   /// foreach d in loadedDrink
 
@@ -122,32 +120,32 @@ io.sockets.on('connection', function (socket) {
   // Save Drink
   // adds drink to drink class for local storage and adds to saved json
   
-  socket.on('saveDrink', function(drink1, drink2, drink3, drink4, drink5, drink6, mixer1, mixer2, mixer3, mixer4, dName) {
+//   socket.on('saveDrink', function(drink1, drink2, drink3, drink4, drink5, drink6, mixer1, mixer2, mixer3, mixer4, dName) {
   
-  var createdDrink = new Drink(dName, drink1,drink2,drink3,drink4,drink5,drink6,
-	  mixer1,mixer2,mixer3,mixer4);
+//   var createdDrink = new Drink(dName, drink1,drink2,drink3,drink4,drink5,drink6,
+// 	  mixer1,mixer2,mixer3,mixer4);
 
-  drinks.push(createdDrink);
+//   drinks.push(createdDrink);
 
-  // RefreshTable(); cant use client
+//   // RefreshTable(); cant use client
 
-  let newSavedDrink = {
-	  d1: drink1,
-	  d2: drink2,
-	  d3: drink3,
-	  d4: drink4,
-	  d5: drink5,
-	  d6: drink6,
+//   let newSavedDrink = {
+// 	  d1: drink1,
+// 	  d2: drink2,
+// 	  d3: drink3,
+// 	  d4: drink4,
+// 	  d5: drink5,
+// 	  d6: drink6,
 
-	  m1: mixer1,
-	  m2: mixer2,
-	  m3: mixer3,
-	  m4: mixer4
-  };
+// 	  m1: mixer1,
+// 	  m2: mixer2,
+// 	  m3: mixer3,
+// 	  m4: mixer4
+//   };
 
-  let data = JSON.stringify(newSavedDrink);
-  fs.writeFileSync('savedDrinks.json', data);
-})
+//   let data = JSON.stringify(newSavedDrink);
+//   fs.writeFileSync('savedDrinks.json', data);
+// })
 });
 
 // initialize pump values
