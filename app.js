@@ -18,7 +18,8 @@ const pumpGPIO = [5,6,13,19];
 let pumps = []; // array to hold all our pumps
 initPumps(pumpGPIO); // initialize pumps for the gpio
 
-const Drink = require('./drink.js')
+const Drink = require('./drink.js').Drink;
+new Drink();
 
 var testCount = 1;
 
