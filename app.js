@@ -58,8 +58,15 @@ function runPyPumps()
 io.sockets.on('connection', function (socket) {
   // check if we have saved drink values and load them into the drinks table
   //savedDrinks.json
-  let rawdata = fs.readFileSync('savedDrinks.json');
-  let loadedDrink = JSON.parse(rawdata);
+
+  fs.readFile('savedDrinks.json', (err, data) => {
+    if (err)
+	{
+		console.log(err)
+	}
+
+    let loadedDrink = JSON.parse(data);
+  });
 
   console.log(loadedDrink);
   /// foreach d in loadedDrink
