@@ -59,17 +59,22 @@ io.sockets.on('connection', function (socket) {
   // check if we have saved drink values and load them into the drinks table
   //savedDrinks.json
 
-  
-  fs.readFile('savedDrinks.json', (err, data) => {
-    if (err) throw err;
+	var file = 'savedDrinks.json';
+	var content = '';
 
-    var loadedDrink = JSON.parse(data);
-	if(loadedDrink)
-	{
-		console.log(loadedDrink);
+	// Check that the file exists locally
+	if(!fs.existsSync(file)) {
+		console.log("File not found");
 	}
 
-  });
+	// The file *does* exist
+	else {
+		// Read the file and do anything you want
+		content = fs.readFileSync(file, 'utf-8');
+
+		// load drink stuff
+		console.log(content);
+	}
   
   /// foreach d in loadedDrink
 
